@@ -74,8 +74,17 @@ const pieNames = () => {
   printToDom('pieNames', domString);
 };
 
+const buttonClick = () => {
+  console.log('you clicked!')
+};
+
+const buttonEvents = () => {
+  document.getElementById('Zoe').addEventListener('click', buttonClick);
+};
+
 const init = () => {
-    pieNames();
+  buttonEvents();
+  pieNames();
 };
 
 init();
