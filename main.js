@@ -60,12 +60,12 @@ const printToDom = (divId, textToPrint) => {
   selectedDiv.innerHTML = textToPrint;
 };
 
-const pieNames = () => {
+const pieBuilder = (mbts) => {
   let domString = '';
 //   for (let i = 0; i < pies.length; i++) {
 //     domString += `<p>${pies[i].name}`
 //   };
-  pies.forEach((pie) => {
+  mbts.forEach((pie) => {
     domString += '<div class="card">';
     domString += `<h2>${pie.name}</h2>`;
     domString += `<img src=${pie.imageUrl} class="pieImage" alt='Image of ${pie.name}.'>`
@@ -74,17 +74,36 @@ const pieNames = () => {
   printToDom('pieNames', domString);
 };
 
-const buttonClick = () => {
-  console.log('you clicked!')
+const buttonClick = (e) => {
+  const buttonId = e.target.id;
+  // // console.log('you clicked!', e.target.id)
+  // loop over pies array
+  // if value of instructor key is the same as the buttonId - keep that object
+  // once we have all the pies for that instructor - print: call pieBuilder
+  const selectedPies = [];
+  pies.forEach((pie) => {
+    if (pie.instructor === buttonId) {
+      selectedPies.push(pie);
+    }
+  });
+
+  if (buttonId === 'All') {
+    pieBuilder(pies);
+  } else {
+    pieBuilder(selectedPies);
+  }
 };
 
 const buttonEvents = () => {
   document.getElementById('Zoe').addEventListener('click', buttonClick);
+  document.getElementById('Saul').addEventListener('click', buttonClick);
+  document.getElementById('Michael').addEventListener('click', buttonClick);
+  document.getElementById('All').addEventListener('click', buttonClick);
 };
 
 const init = () => {
   buttonEvents();
-  pieNames();
+  pieBuilder(pies);
 };
 
 init();
