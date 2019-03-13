@@ -1,3 +1,23 @@
 body {
     background-color: bisque;
 }
+
+#pieNames {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid black;
+    width: 30%;
+    text-align: center;
+    margin: 2px;
+    background-color: darkcyan;
+}
+
+.pieImage {
+    width: 100px;
+    height: 100px;
+    border: 2px solid indigo;
+}
